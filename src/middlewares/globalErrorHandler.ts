@@ -1,6 +1,7 @@
 import { ErrorRequestHandler } from "express";
 import config from "../config";
 import handleValidationError from "../errors/handleValidationError";
+import handleCastError from "../errors/handleCastError";
 
 const globalErrorHandlers: ErrorRequestHandler = (err, req, res, _next) => {
   if (config.env === "development") {
@@ -13,6 +14,11 @@ const globalErrorHandlers: ErrorRequestHandler = (err, req, res, _next) => {
   let errorMessage: any[] = [];
   if (err?.name === "validationError") {
     const simplifiedError = handleValidationError(err);
+    statusCode = simplifiedError.statusCode;
+    message = simplifiedError.message;
+    errorMessage = simplifiedError.errorMessage;
+  } else if (err?.name === "castError") {
+    const simplifiedError = handleCastError(err);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessage = simplifiedError.errorMessage;
