@@ -11,6 +11,17 @@ const createUser = async (req: Request, res: Response) => {
     data: result,
   });
 };
+const getAllUserData = async (req: Request, res: Response) => {
+  const result = await userService.getUserAllData()
+  res.json({
+    stausCode: 200,
+    success: true,
+    message: "Users data featched successfully",
+    data: result
+  })
+}
+
 export const userController = {
   createUser,
+  getAllUserData,
 };

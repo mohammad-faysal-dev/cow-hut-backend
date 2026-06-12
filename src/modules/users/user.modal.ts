@@ -12,7 +12,11 @@ const nameSchema = new Schema({
     required: true,
     trim: true,
   },
-});
+},
+  {
+    _id: false
+  }
+);
 
 const userSchema = new Schema<IUser>({
   name: nameSchema,
@@ -42,6 +46,11 @@ const userSchema = new Schema<IUser>({
     default: 0,
     min: 0,
   },
-});
 
-export const User = model<IUser>("User", userSchema);
+},
+  {
+    timestamps: true
+  }
+);
+
+export const UserData = model<IUser>("UserData", userSchema);

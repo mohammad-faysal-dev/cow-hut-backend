@@ -1,11 +1,18 @@
 import { IUser } from "./user.interface";
-import { User } from "./user.modal";
+import { UserData } from "./user.modal";
 
 const createUser = async (user: IUser): Promise<IUser | null> => {
-  const result = await User.create(user);
+  const result = await UserData.create(user);
   return result;
 };
 
-export const userService= {
-    createUser
+const getUserAllData = async () => {
+  const result = await UserData.find()
+  return result
+}
+
+
+export const userService = {
+  createUser,
+  getUserAllData,
 }
