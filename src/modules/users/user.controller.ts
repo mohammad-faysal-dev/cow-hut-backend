@@ -21,7 +21,19 @@ const getAllUserData = async (req: Request, res: Response) => {
   })
 }
 
+const getSingleUser = async (req: Request, res: Response) => {
+  const id = req.params.id as string
+  const result = await userService.getSingleUser(id)
+  res.json({
+    statusCode: 200,
+    success: true,
+    message: "single user featched successfully",
+    data: result
+  })
+}
+
 export const userController = {
   createUser,
   getAllUserData,
+  getSingleUser
 };

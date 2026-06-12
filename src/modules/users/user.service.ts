@@ -10,9 +10,13 @@ const getUserAllData = async () => {
   const result = await UserData.find()
   return result
 }
-
+const getSingleUser = async (id: string) => {
+  const result = await UserData.findById(id)
+  return result
+}
 
 export const userService = {
   createUser,
   getUserAllData,
+  getSingleUser
 }
