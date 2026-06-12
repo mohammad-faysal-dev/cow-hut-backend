@@ -4,6 +4,7 @@ import handleValidationError from "../errors/handleValidationError";
 import handleCastError from "../errors/handleCastError";
 import { ZodError } from "zod";
 import handleZodError from "../errors/handleZodError";
+import ApiError from "../errors/ApiError";
 
 const globalErrorHandlers: ErrorRequestHandler = (err, req, res, _next) => {
   if (config.env === "development") {
@@ -29,6 +30,27 @@ const globalErrorHandlers: ErrorRequestHandler = (err, req, res, _next) => {
     ((statusCode = simplifiedError.statusCode),
       (message = simplifiedError.message));
     errorMessage = simplifiedError.errorMessage;
+  } else if (err instanceof ApiError) {
+    statusCode = err?.statusCode;
+    message = err?.message;
+    errorMessage = err?.message
+      ? [
+          {
+            path: "",
+            message: err?.message,
+          },
+        ]
+      : [];
+  } else if (err instanceof Error) {
+    message = err?.message;
+    errorMessage = err?.message
+      ? [
+          {
+            path: "",
+            message: err?.message,
+          },
+        ]
+      : [];
   }
   res.status(statusCode).json({
     success: true,
