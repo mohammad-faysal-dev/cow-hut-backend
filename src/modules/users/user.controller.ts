@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { userService } from "./user.service";
 import sendResponse from "../../shared/sendResponse";
+import catchAsync from "../../shared/catchAsync";
 
 
-const getAllUserData = async (req: Request, res: Response) => {
+const getAllUserData = catchAsync(async (req, res) => {
   const result = await userService.getUserAllData()
   sendResponse(res, {
     statusCode: 200,
@@ -11,9 +12,9 @@ const getAllUserData = async (req: Request, res: Response) => {
     message: "Users data featched successfully",
     data: result
   })
-}
+})
 
-const getSingleUser = async (req: Request, res: Response) => {
+const getSingleUser = catchAsync(async (req, res) => {
   const id = req.params.id as string
   const result = await userService.getSingleUser(id)
   sendResponse(res, {
@@ -22,8 +23,8 @@ const getSingleUser = async (req: Request, res: Response) => {
     message: "single user featched successfully",
     data: result
   })
-}
-const updateUser = async (req: Request, res: Response) => {
+})
+const updateUser = catchAsync(async (req, res) => {
   const id = req.params.id as string
   const result = await userService.updateUser(id, req.body)
   sendResponse(res, {
@@ -32,9 +33,9 @@ const updateUser = async (req: Request, res: Response) => {
     message: "user updated successfully",
     data: result
   })
-}
+})
 
-const deletedUser = async (req: Request, res: Response) => {
+const deletedUser = catchAsync(async (req, res) => {
   const id = req.params.id as string
   const result = await userService.deletedUser(id)
   sendResponse(res, {
@@ -43,7 +44,7 @@ const deletedUser = async (req: Request, res: Response) => {
     message: "user deleted successfully",
     data: result
   })
-}
+})
 export const userController = {
   getAllUserData,
   getSingleUser,

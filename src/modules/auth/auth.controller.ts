@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { authService } from "./auth.service";
 import sendResponse from "../../shared/sendResponse";
+import catchAsync from "../../shared/catchAsync";
 
-const createUser = async (req: Request, res: Response) => {
+const createUser = catchAsync(async (req, res) => {
     const { ...userData } = req.body;
     const result = await authService.createUser(userData);
     sendResponse(res, {
@@ -11,7 +12,7 @@ const createUser = async (req: Request, res: Response) => {
         message: "User created successfully",
         data: result
     })
-};
+})
 
 export const authController = {
     createUser
