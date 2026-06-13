@@ -15,8 +15,19 @@ const getSingleUser = async (id: string) => {
   return result
 }
 
+const updateUser = async (id: string, payload: Partial<IUser>): Promise<IUser | null> => {
+  const result = await UserData.findOneAndUpdate({ _id: id }, payload, { new: true })
+  return result
+}
+
+const deletedUser = async (id: string) => {
+  const result = await UserData.findByIdAndDelete(id)
+  return result
+}
 export const userService = {
   createUser,
   getUserAllData,
-  getSingleUser
+  getSingleUser,
+  updateUser,
+  deletedUser
 }

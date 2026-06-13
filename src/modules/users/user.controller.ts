@@ -31,9 +31,31 @@ const getSingleUser = async (req: Request, res: Response) => {
     data: result
   })
 }
+const updateUser = async (req: Request, res: Response) => {
+  const id = req.params.id as string
+  const result = await userService.updateUser(id, req.body)
+  res.json({
+    statusCode: 200,
+    success: true,
+    message: "user updated successfully",
+    data: result
+  })
+}
 
+const deletedUser = async (req: Request, res: Response) => {
+  const id = req.params.id as string
+  const result = await userService.deletedUser(id)
+  res.json({
+    statusCode: 200,
+    success: true,
+    message: "user deleted successfully",
+    data: result
+  })
+}
 export const userController = {
   createUser,
   getAllUserData,
-  getSingleUser
+  getSingleUser,
+  updateUser,
+  deletedUser
 };
