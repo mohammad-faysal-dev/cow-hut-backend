@@ -6,6 +6,11 @@ const createCow = async (payload: ICow): Promise<ICow> => {
     return result
 }
 
+const getSingleCow = async (id: string): Promise<ICow | null> => {
+    const result = await CowData.findById(id).populate('seller')
+    return result
+}
 export const CowService = {
-    createCow
+    createCow,
+    getSingleCow
 }
