@@ -1,14 +1,15 @@
 import { Request, Response } from "express";
 import { authService } from "./auth.service";
+import sendResponse from "../../shared/sendResponse";
 
 const createUser = async (req: Request, res: Response) => {
     const { ...userData } = req.body;
     const result = await authService.createUser(userData);
-    res.json({
+    sendResponse(res, {
         statusCode: 200,
         success: true,
         message: "User created successfully",
-        data: result,
+        data: result
     })
 };
 
