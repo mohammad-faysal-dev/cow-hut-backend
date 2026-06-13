@@ -12,3 +12,10 @@ export interface ICow {
     category: Category,
     seller: Types.ObjectId;
 }
+
+export interface TCowFilters {
+    searchTerm?: string
+    email?: string
+    contactNo?: string
+    emergencyContactNo?: string
+}

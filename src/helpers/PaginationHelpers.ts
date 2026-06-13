@@ -30,4 +30,6 @@ const calculatePagination = (options: IOptions): IOptionsResult => {
     }
 }
 
-export default calculatePagination
+export const paginationHelper = {
+    calculatePagination
+}

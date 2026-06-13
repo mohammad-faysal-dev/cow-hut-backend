@@ -29,3 +29,26 @@ export enum Category {
     Beef = "Beef",
     DualPurpose = "Dual Purpose",
 }
+
+export const cowFilterableFields = [
+    'searchTerm',
+    'location',
+    'breed',
+    'category',
+    'level',
+    'price',
+    'weight',
+    'age',
+    'seller',
+]
+export const cowSearchableFields = [
+    'name',
+    'age',
+    'price',
+    'weight',
+    'location',
+    'level',
+    'breed',
+    'category',
+    'seller',
+]
