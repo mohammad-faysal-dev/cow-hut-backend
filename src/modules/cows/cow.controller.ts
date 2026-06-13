@@ -13,6 +13,7 @@ const createCow = catchAsync(async (req, res) => {
     })
 })
 
+
 const getSingleCow = catchAsync(async (req, res) => {
     const id = req.params.id as string;
     const result = await CowService.getSingleCow(id)
