@@ -35,6 +35,11 @@ const createOrder = async (payload: IOrder): Promise<IOrder[]> => {
         throw error
     }
 }
+const getOrders = async () => {
+    const result = await Order.find().populate('cow').populate('buyer')
+    return result
+}
 export const orderService = {
-    createOrder
+    createOrder,
+    getOrders
 }

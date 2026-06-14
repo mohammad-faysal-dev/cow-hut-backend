@@ -12,6 +12,17 @@ const createOrder = catchAsync(async (req, res) => {
     })
 })
 
+const getOrders = catchAsync(async (req, res) => {
+    const result = await orderService.getOrders()
+    sendResponse(res, {
+        statusCode: 200,
+        success: true,
+        message: "Orders fetched successfully",
+        data: result
+    })
+})
+
 export const OrderController = {
-    createOrder
+    createOrder,
+    getOrders
 }
