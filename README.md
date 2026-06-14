@@ -1,6 +1,6 @@
 # Cow Hut Backend 🐄🏠
 
-![Cow Hut Banner](assets/banner-beautiful.svg)
+![Cow Hut Banner](assets/banner.png)
 
 A robust and scalable marketplace REST API for buying and selling cows, designed with **Node.js**, **Express**, **TypeScript**, and **MongoDB**. This project provides a comprehensive solution for managing users (buyers and sellers), cow listings, and an order processing system with financial transaction handling.
 
