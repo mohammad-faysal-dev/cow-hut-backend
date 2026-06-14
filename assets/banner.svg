@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="Cow Hut Backend banner">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#bg)" rx="28"/>
+  <circle cx="950" cy="110" r="80" fill="#fbbf24" opacity="0.12"/>
+  <circle cx="220" cy="290" r="110" fill="#22c55e" opacity="0.10"/>
+  <text x="96" y="156" fill="#f9fafb" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="700">Cow Hut Backend</text>
+  <text x="96" y="225" fill="#d1fae5" font-family="Segoe UI, Arial, sans-serif" font-size="26">Node.js • Express • TypeScript • MongoDB</text>
+  <rect x="96" y="265" width="260" height="8" rx="4" fill="url(#accent)"/>
+  <text x="96" y="320" fill="#f3f4f6" font-family="Segoe UI, Arial, sans-serif" font-size="22">A scalable REST API for buying and selling cows</text>
+</svg>
