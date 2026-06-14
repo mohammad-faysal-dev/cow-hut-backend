@@ -13,9 +13,9 @@ export interface ICow {
     seller: Types.ObjectId;
 }
 
-export interface TCowFilters {
-    searchTerm?: string
-    email?: string
-    contactNo?: string
-    emergencyContactNo?: string
-}
+export type TCowFilters = {
+    searchTerm?: string;
+    minPrice?: number;
+    maxPrice?: number;
+    location?: string;
+};

@@ -11,11 +11,15 @@ const createCow = async (payload: ICow): Promise<ICow> => {
     return result
 }
 
-const getAllCows = async (filters: TCowFilters, paginationOptions: IPaginationOptions): Promise<IGenericResponse<ICow[]>> => {
-    const { searchTerm, ...filtersData } = filters
-    const { page, limit, sortBy, sortOrder } = paginationHelper.calculatePagination(paginationOptions)
+const getAllCows = async (
+    filters: TCowFilters,
+    paginationOptions: IPaginationOptions
+): Promise<IGenericResponse<ICow[]>> => {
+    const { searchTerm, minPrice, maxPrice, ...filtersData } = filters;
+    const { page, limit, sortBy, sortOrder } =
+        paginationHelper.calculatePagination(paginationOptions);
 
-    const andConditions = []
+    const andConditions = [];
 
     if (searchTerm) {
         andConditions.push({
@@ -25,7 +29,19 @@ const getAllCows = async (filters: TCowFilters, paginationOptions: IPaginationOp
                     $options: 'i',
                 },
             })),
-        })
+        });
+    }
+
+    if (minPrice !== undefined) {
+        andConditions.push({
+            price: { $gte: Number(minPrice) },
+        });
+    }
+
+    if (maxPrice !== undefined) {
+        andConditions.push({
+            price: { $lte: Number(maxPrice) },
+        });
     }
 
     if (Object.keys(filtersData).length) {
@@ -33,10 +49,10 @@ const getAllCows = async (filters: TCowFilters, paginationOptions: IPaginationOp
             $and: Object.entries(filtersData).map(([field, value]) => ({
                 [field]: value,
             })),
-        })
+        });
     }
 
-    const whereConditions = andConditions.length ? { $and: andConditions } : {}
+    const whereConditions = andConditions.length ? { $and: andConditions } : {};
 
     const sortConditions: { [key: string]: SortOrder } = {}
     if (sortBy && sortOrder) {

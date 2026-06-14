@@ -32,23 +32,12 @@ export enum Category {
 
 export const cowFilterableFields = [
     'searchTerm',
+    'minPrice',
+    'maxPrice',
     'location',
-    'breed',
-    'category',
-    'level',
-    'price',
-    'weight',
-    'age',
-    'seller',
-]
+];
 export const cowSearchableFields = [
-    'name',
-    'age',
-    'price',
-    'weight',
     'location',
-    'level',
     'breed',
     'category',
-    'seller',
-]
+];
